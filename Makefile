@@ -1,5 +1,5 @@
 TARGET = mcdonalds
-LIBS = -lm -lenet
+LIBS = lib/libenet.a -lm
 CC = clang
 CFLAGS = -g -Wall
 
