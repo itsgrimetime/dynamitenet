@@ -1,4 +1,4 @@
-TARGET = mcdonalds
+TARGET = dynanet.out
 LIBS = lib/libenet.a -lm
 CC = clang
 CFLAGS = -g -Wall
