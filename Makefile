@@ -1,4 +1,4 @@
-TARGET = prog
+TARGET = mcdonalds
 LIBS = -lm -lenet
 CC = clang
 CFLAGS = -g -Wall
