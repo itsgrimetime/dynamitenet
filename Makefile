@@ -1,7 +1,7 @@
 TARGET = dynanet.out
 LIBS = lib/libenet.a -lm
 CC = clang
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall `pkg-config --cflags glib-2.0`
 
 .PHONY: default all clean
 

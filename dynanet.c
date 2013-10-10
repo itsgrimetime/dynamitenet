@@ -1,5 +1,6 @@
 #include <enet/enet.h>
 #include <stdio.h>
+#include "objects.h"
 
 #define SERVER_PORT 3333
 #define MAX_CONN    32
