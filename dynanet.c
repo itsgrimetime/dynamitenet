@@ -35,6 +35,35 @@ int main(int argc, char **argv) {
 	fprintf(stdout, "ENet server created successfully.\n");
     }
 
+    ENetEvent event;
+
+    while (enet_host_service(server, &event, 30000) > 0) {
+	switch (event.type) {
+	    case ENET_EVENT_TYPE_CONNECT:
+		printf("A new client connected from %x:%u.\n",
+			event.peer->address.host,
+			event.peer->address.port);
+
+		/* Store any relevant client info here */
+		event.peer->data = "Client information";
+		break;
+	    case ENET_EVENT_TYPE_RECEIVE:
+		printf("Packet received containing %s from %s on channel %u.\n",
+			event.packet->data,
+			event.peer->data,
+			event.channelID);
+		enet_packet_destroy(event.packet);
+		break;
+	    case ENET_EVENT_TYPE_DISCONNECT:
+		printf("%s disconnected.\n", event.peer->data);
+		event.peer->data = NULL;
+		break;
+	    case ENET_EVENT_TYPE_NONE:
+		printf("no event.\n");
+		// no event occured?
+		break;
+	}
+    }
 
     enet_host_destroy(server);
     return 0;
